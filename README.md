@@ -17,8 +17,9 @@ This project was created as a baseline development for mapping processing
 - [x] Http Client
 - [x] Cache
 - [x] Logging
-- [ ] Database
-- [ ] Database Migration
+- [x] Database
+- [x] Database Migration
 - [x] Docker Support
 - [ ] Sample Mapping And API
+- [ ] Open API Spec / Swagger
 - [ ] Integration Test
