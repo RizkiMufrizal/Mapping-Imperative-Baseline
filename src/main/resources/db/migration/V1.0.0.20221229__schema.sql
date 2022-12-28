@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS tb_end_point
     UNIQUE KEY u_backend_function (backend, backend_function)
 ) engine = InnoDB;
 
-CREATE INDEX IF NOT EXISTS idx_backend_function ON tb_end_point (backend, backend_function);
+CREATE INDEX idx_backend_function ON tb_end_point (backend, backend_function);
 
 CREATE TABLE IF NOT EXISTS tb_harmonized
 (
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS tb_harmonized
     UNIQUE KEY u_backend_code (backend, backend_code)
 ) engine = InnoDB;
 
-CREATE INDEX IF NOT EXISTS idx_backend_code ON tb_harmonized (backend, backend_code);
+CREATE INDEX idx_backend_code ON tb_harmonized (backend, backend_code);
 
 CREATE TABLE IF NOT EXISTS tb_system_parameter
 (
