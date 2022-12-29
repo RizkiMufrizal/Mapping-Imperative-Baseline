@@ -10,7 +10,7 @@ This project was created as a baseline development for mapping processing
 ## How To Build
 
 1. Run build jar with command `mvn clean install`
-2. Run build docker image with command `mvn clean docker:build`
+2. Run build docker image with command `mvn clean install docker:build`
 
 ## Feature
 
