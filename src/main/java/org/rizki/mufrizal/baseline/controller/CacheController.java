@@ -1,5 +1,6 @@
 package org.rizki.mufrizal.baseline.controller;
 
+import org.rizki.mufrizal.baseline.mapper.harmonized.GeneralHarmonizedResponse;
 import org.rizki.mufrizal.baseline.service.EndPointService;
 import org.rizki.mufrizal.baseline.service.HarmonizedService;
 import org.rizki.mufrizal.baseline.service.SystemParameterService;
@@ -9,9 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1")
@@ -32,40 +30,48 @@ public class CacheController {
         harmonizedService.reload();
         systemParameterService.reload();
 
-        Map<String, Object> stringObjectMap = new HashMap<>();
-        stringObjectMap.put("Success", true);
+        GeneralHarmonizedResponse generalHarmonizedResponse = GeneralHarmonizedResponse.builder()
+                .code("200")
+                .description("Success")
+                .build();
 
-        return new ResponseEntity<>(stringObjectMap, HttpStatus.OK);
+        return new ResponseEntity<>(generalHarmonizedResponse, HttpStatus.OK);
     }
 
     @GetMapping(value = "/cache/endpoint")
     public ResponseEntity<?> clearEndPointCache() {
         endPointService.reload();
 
-        Map<String, Object> stringObjectMap = new HashMap<>();
-        stringObjectMap.put("Success", true);
+        GeneralHarmonizedResponse generalHarmonizedResponse = GeneralHarmonizedResponse.builder()
+                .code("200")
+                .description("Success")
+                .build();
 
-        return new ResponseEntity<>(stringObjectMap, HttpStatus.OK);
+        return new ResponseEntity<>(generalHarmonizedResponse, HttpStatus.OK);
     }
 
     @GetMapping(value = "/cache/harmonized")
     public ResponseEntity<?> clearHarmonizedCache() {
         harmonizedService.reload();
 
-        Map<String, Object> stringObjectMap = new HashMap<>();
-        stringObjectMap.put("Success", true);
+        GeneralHarmonizedResponse generalHarmonizedResponse = GeneralHarmonizedResponse.builder()
+                .code("200")
+                .description("Success")
+                .build();
 
-        return new ResponseEntity<>(stringObjectMap, HttpStatus.OK);
+        return new ResponseEntity<>(generalHarmonizedResponse, HttpStatus.OK);
     }
 
     @GetMapping(value = "/cache/systemparameter")
     public ResponseEntity<?> clearSystemParameterCache() {
         systemParameterService.reload();
 
-        Map<String, Object> stringObjectMap = new HashMap<>();
-        stringObjectMap.put("Success", true);
+        GeneralHarmonizedResponse generalHarmonizedResponse = GeneralHarmonizedResponse.builder()
+                .code("200")
+                .description("Success")
+                .build();
 
-        return new ResponseEntity<>(stringObjectMap, HttpStatus.OK);
+        return new ResponseEntity<>(generalHarmonizedResponse, HttpStatus.OK);
     }
 
 }

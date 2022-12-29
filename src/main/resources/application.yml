@@ -7,27 +7,35 @@ server:
       min-spare: 50
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/belajar-mapping
+    url: jdbc:mysql://localhost:3306/db_belajar_mapping
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-      connection-timeout: 30000
       pool-name: mapping-pool
       maximum-pool-size: 50
+      connection-timeout: 30000
       max-lifetime: 600000
   jpa:
     show-sql: true
     open-in-view: false
     properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: UNSPECIFIED
       hibernate:
         format_sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   flyway:
-    url: jdbc:mysql://localhost:3306/belajar-mapping
+    url: jdbc:mysql://localhost:3306/db_belajar_mapping
     user: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     placeholder-replacement: false
+mapping:
+  hello:
+    backend: BE
+    backend-function: sayHello

@@ -1,11 +1,10 @@
 package org.rizki.mufrizal.baseline.service;
 
 import org.rizki.mufrizal.baseline.domain.SystemParameter;
-
-import java.util.Optional;
+import org.rizki.mufrizal.baseline.exception.ParameterNotFoundException;
 
 public interface SystemParameterService {
-    Optional<SystemParameter> findByParamName(String paramName);
+    SystemParameter findByParamName(String paramName) throws ParameterNotFoundException;
 
     void reload();
 }

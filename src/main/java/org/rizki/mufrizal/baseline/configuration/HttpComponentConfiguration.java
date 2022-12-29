@@ -34,7 +34,7 @@ public class HttpComponentConfiguration {
                             .build())
                     .build();
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
-            LoggingHelper.Log(e);
+            LoggingHelper.log(e);
             throw new RuntimeException(e);
         }
     }

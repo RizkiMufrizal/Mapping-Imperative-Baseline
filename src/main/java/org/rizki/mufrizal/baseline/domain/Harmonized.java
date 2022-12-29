@@ -42,4 +42,10 @@ public class Harmonized implements Serializable {
     @Column(name = "harmonized_desc", length = 50)
     private String harmonizedDescription;
 
+    @Column(name = "harmonized_http_status", length = 3)
+    private Integer harmonizedHttpStatus;
+
+    @Column(name = "is_error")
+    private Boolean isError;
+
 }

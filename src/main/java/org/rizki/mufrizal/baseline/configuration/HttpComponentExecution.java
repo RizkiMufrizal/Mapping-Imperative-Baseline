@@ -20,14 +20,14 @@ public class HttpComponentExecution<T> extends HttpUriRequestBase {
         super(method, URI.create(url));
     }
 
-    public Object execute(int connectTimeout, int activeTimeout, Object requestBody, Map<String, String> headers, Class<Object> tClass) throws Exception {
+    public T execute(int connectTimeout, int activeTimeout, Object requestBody, Map<String, String> headers, Class<T> tClass) throws Exception {
         headers.entrySet().parallelStream().forEach(header -> this.addHeader(header.getKey(), header.getValue()));
         JsonHelper jsonHelper = JsonHelper.getInstance();
         if (requestBody != null) {
             try {
                 this.setEntity(new StringEntity(jsonHelper.objectMapper.writeValueAsString(requestBody), ContentType.APPLICATION_JSON));
             } catch (JsonProcessingException e) {
-                LoggingHelper.Log(e);
+                LoggingHelper.log(e);
                 throw new RuntimeException(e);
             }
         }
@@ -42,7 +42,7 @@ public class HttpComponentExecution<T> extends HttpUriRequestBase {
             return closeableHttpClient.execute(this, response -> {
                 long t2 = System.nanoTime();
                 String responseBody = EntityUtils.toString(response.getEntity());
-                Object tObject = jsonHelper.objectMapper.readValue(responseBody, tClass);
+                T tObject = jsonHelper.objectMapper.readValue(responseBody, tClass);
 
                 log.info(String.format("Received response for %s in %.1fms", this.getRequestUri(), (t2 - t1) / 1e6d));
                 log.info("Response Header {}", jsonHelper.objectMapper.writeValueAsString(response.getHeaders()));
@@ -54,7 +54,7 @@ public class HttpComponentExecution<T> extends HttpUriRequestBase {
                 return tObject;
             });
         } catch (Exception e) {
-            LoggingHelper.Log(e);
+            LoggingHelper.log(e);
             throw new RuntimeException(e);
         }
     }

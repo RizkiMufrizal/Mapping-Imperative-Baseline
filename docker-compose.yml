@@ -8,6 +8,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_belajar_mapping
     ports:
       - "3306:3306"
 
