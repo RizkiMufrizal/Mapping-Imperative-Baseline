@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,7 @@ public class HelloRestClient {
         HelloClientRequest helloClientRequest = helloMapper.toHelloClientRequest(helloServerRequest);
         try {
             Map<String, String> headers = new HashMap<>();
+            headers.put("Authorization", "Basic " + Base64.getEncoder().encodeToString("admin:admin".getBytes()));
             HttpComponentExecution<HelloClientResponse> httpComponentExecution = new HttpComponentExecution<>(endPoint.getMethod().toString(), endPoint.getUrl());
             HelloClientResponse helloClientResponse = httpComponentExecution.execute(endPoint.getConnectTimeout(), endPoint.getTimeout(), helloClientRequest, headers, HelloClientResponse.class);
             return helloMapper.toHelloServerResponse(backend, helloClientResponse);
