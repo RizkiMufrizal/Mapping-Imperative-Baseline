@@ -22,4 +22,4 @@ This project was created as a baseline development for mapping processing
 - [x] Docker Support
 - [x] Sample Mapping And API
 - [x] Open API Spec / Swagger
-- [ ] Integration Test
+- [x] Integration Test
