@@ -39,3 +39,6 @@ mapping:
   hello:
     backend: BE
     backend-function: sayHello
+springdoc:
+  baseurl: https://mapping.com
+  paths-to-match: /api/v1/**

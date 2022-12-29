@@ -21,5 +21,5 @@ This project was created as a baseline development for mapping processing
 - [x] Database Migration
 - [x] Docker Support
 - [x] Sample Mapping And API
-- [ ] Open API Spec / Swagger
+- [x] Open API Spec / Swagger
 - [ ] Integration Test
