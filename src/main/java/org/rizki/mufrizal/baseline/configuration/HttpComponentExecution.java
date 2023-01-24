@@ -14,13 +14,13 @@ import java.net.URI;
 import java.util.Map;
 
 @Log4j2
-public class HttpComponentExecution<T> extends HttpUriRequestBase {
+public class HttpComponentExecution extends HttpUriRequestBase {
 
     public HttpComponentExecution(String method, String url) {
         super(method, URI.create(url));
     }
 
-    public T execute(int connectTimeout, int activeTimeout, Object requestBody, Map<String, String> headers, Class<T> tClass) throws Exception {
+    public <T> T execute(int connectTimeout, int activeTimeout, Object requestBody, Map<String, String> headers, Class<T> tClass) throws Exception {
         headers.entrySet().parallelStream().forEach(header -> this.addHeader(header.getKey(), header.getValue()));
         JsonHelper jsonHelper = JsonHelper.getInstance();
         if (requestBody != null) {

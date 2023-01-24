@@ -37,7 +37,7 @@ public class HelloRestClient {
         try {
             Map<String, String> headers = new HashMap<>();
             headers.put("Authorization", "Basic " + Base64.getEncoder().encodeToString("admin:admin".getBytes()));
-            HttpComponentExecution<HelloClientResponse> httpComponentExecution = new HttpComponentExecution<>(endPoint.getMethod().toString(), endPoint.getUrl());
+            HttpComponentExecution httpComponentExecution = new HttpComponentExecution(endPoint.getMethod().toString(), endPoint.getUrl());
             HelloClientResponse helloClientResponse = httpComponentExecution.execute(endPoint.getConnectTimeout(), endPoint.getTimeout(), helloClientRequest, headers, HelloClientResponse.class);
             return helloMapper.toHelloServerResponse(backend, helloClientResponse);
         } catch (Exception e) {
